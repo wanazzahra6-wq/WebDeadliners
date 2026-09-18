@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deadliners.business - Solusi Tugas & Deadline Kamu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f5ff',
+                            100: '#e0ebff',
+                            500: '#4f46e5',
+                            600: '#4338ca',
+                            700: '#3730a3',
+                            accent: '#06b6d4',
+                            emerald: '#10b981'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-2">
+                    <!-- KODE SESUAI LOGO SENDIRI -->
+<a href="#" class="flex items-center space-x-3">
+    <!-- Ganti logo.png dengan nama file logo kamu -->
+    <img src="logo.png" alt="deadliners.business logo" class="h-10 w-auto object-contain" />
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900">
+                        deadliners<span class="text-indigo-600">.business</span>
+                    </span>
+                </div>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+                    <a href="#layanan" class="hover:text-indigo-600 transition">Layanan</a>
+                    <a href="#kalkulator" class="hover:text-indigo-600 transition">Kalkulator Harga</a>
+                    <a href="#portofolio" class="hover:text-indigo-600 transition">Portofolio</a>
+                    <a href="#cara-order" class="hover:text-indigo-600 transition">Cara Order</a>
+                    <a href="#faq" class="hover:text-indigo-600 transition">FAQ</a>
+                </div>
+
+                <!-- CTA Button Header -->
+                <div class="hidden md:flex items-center">
+                    <a href="#kalkulator" class="gradient-bg text-white px-5 py-2.5 rounded-xl font-semibold hover:opacity-95 transition shadow-lg shadow-indigo-500/20 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-calculator">
+                        </i> Cek Estimasi Harga
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-slate-600 p-2 rounded-lg hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-3">
+            <a href="#layanan" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600">Layanan</a>
+            <a href="#kalkulator" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600">Kalkulator Harga</a>
+            <a href="#portofolio" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600">Portofolio</a>
+            <a href="#cara-order" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600">Cara Order</a>
+            <a href="#faq" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600">FAQ</a>
+            <a href="#kalkulator" class="mobile-link block w-full text-center gradient-bg text-white py-3 rounded-xl font-bold shadow-md">Cek Harga Sekarang</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden relative">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-indigo-300/30 to-cyan-300/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold shadow-sm">
+                    <span class="flex h-2 w-2 rounded-full bg-indigo-600 animate-ping"></span>
+                    Solusi Cepat, Rapi & Bebas Stres Tugas Sekolah/Kuliah
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    Tugas Numpuk & Deadline Pepet? <br>
+                    <span class="gradient-text">deadliners.business</span> Aja!
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed">
+                    Jasa pengerjaan Presentation PPT, Perapihan Makalah & Laporan, Proposal, hingga Design Banner & Poster. Pengerjaan kilat, harga pas dikantong pelajar & mahasiswa!
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#kalkulator" class="w-full sm:w-auto gradient-bg text-white px-8 py-4 rounded-xl font-bold text-base shadow-xl shadow-indigo-500/25 hover:scale-[1.02] transition active:scale-95 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-calculator text-lg"></i>
+                        Hitung Biaya Tugas Kamu
+                    </a>
+                    <a href="#portofolio" class="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-bold text-base hover:bg-slate-50 hover:border-slate-300 transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-regular fa-folder-open"></i>
+                        Lihat Portofolio
+                    </a>
+                </div>
+
+                <!-- Feature Badges -->
+                <div class="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-left border-t border-slate-200/80">
+                    <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl border border-slate-100">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-bolt text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Proses Kilat</h4>
+                            <p class="text-xs text-slate-500">Bisa Express 24 Jam</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl border border-slate-100">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-tag text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Ramah Kantong</h4>
+                            <p class="text-xs text-slate-500">Mulai Rp 15 Ribu</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl border border-slate-100">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-shield-halved text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Privasi Aman</h4>
+                            <p class="text-xs text-slate-500">Kerahasiaan Dijamin</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl border border-slate-100">
+                        <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-rotate-left text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Gratis Revisi</h4>
+                            <p class="text-xs text-slate-500">Syarat & Ketentuan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Layanan Kami -->
+    <section id="layanan" class="py-20 bg-white border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-2">Layanan Kami</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">Bebaskan Beban Akademik & Desain Kamu</p>
+                <p class="mt-3 text-slate-600">Pilih jenis pengerjaan tugas yang kamu butuhkan, tim profesional kami siap bantu sampai tuntas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: PPT -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center mb-5 text-xl font-bold shadow-md shadow-indigo-500/20">
+                            <i class="fa-solid fa-file-powerpoint"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Presentasi PPT Professional</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Desain slide presentasi yang estetik, tidak membosankan, rapi, beserta poin-poin materi yang mudah dipahami audience.
+                        </p>
+                        <ul class="text-xs font-medium text-slate-600 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Modern & Custom Visual Design</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Perangkuman Materi Otomatis</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Animasi & Transisi Rapi</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">Mulai dari</span>
+                        <span class="text-lg font-extrabold text-indigo-600">Rp 25.000</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Makalah & Laporan -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-600 text-white flex items-center justify-center mb-5 text-xl font-bold shadow-md shadow-cyan-500/20">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Makalah & Laporan</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Pembuatan dari awal maupun perbaikan (edit) struktur isi, analisis data sederhana, pembahasan, hingga kesimpulan.
+                        </p>
+                        <ul class="text-xs font-medium text-slate-600 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-600"></i> Bahasa Akademis Sesuai EYD/PUEBI</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-600"></i> Poin Bab & Sub-bab Sistematis</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-600"></i> Siap Cetak / Siap Kirim PDF</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">Mulai dari</span>
+                        <span class="text-lg font-extrabold text-indigo-600">Rp 25.000</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Proposal -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center mb-5 text-xl font-bold shadow-md shadow-emerald-500/20">
+                            <i class="fa-solid fa-scroll"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Proposal Kegiatan / Tugas</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Penyusunan & perapihan proposal kegiatan organisasi, proposal penelitian, atau tugas akhir mata kuliah.
+                        </p>
+                        <ul class="text-xs font-medium text-slate-600 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Pendahuluan & Latar Belakang Ciamik</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Estimasi Biaya / Rancangan Rapi</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Tata Layout Rapi Sesuai Standar</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">Mulai dari</span>
+                        <span class="text-lg font-extrabold text-indigo-600">Rp 30.000</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Design Banner & Poster -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-purple-600 text-white flex items-center justify-center mb-5 text-xl font-bold shadow-md shadow-purple-500/20">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Design Banner & Poster</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Desain promosi, poster acara kampus, banner kegiatan, flyer digital, hingga feed Instagram menarik.
+                        </p>
+                        <ul class="text-xs font-medium text-slate-600 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> HD Resolution File (PNG/JPG/PDF)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> Konsep Kreatif & Bebas Request</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600"></i> Selesai Dalam 24-48 Jam</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">Mulai dari</span>
+                        <span class="text-lg font-extrabold text-indigo-600">Rp 20.000</span>
+                    </div>
+                </div>
+
+                <!-- Card 5: Formatting Dokumen -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 card-hover flex flex-col justify-between md:col-span-2 lg:col-span-2">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center mb-5 text-xl font-bold shadow-md shadow-amber-500/20">
+                            <i class="fa-solid fa-align-left"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Formatting & Perapihan Dokumen Word</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Sudah punya ketikan tapi berantakan? Kami rapikan Margin (4-3-3-3), Daftar Isi Otomatis, Font, Page Number, Daftar Gambar/Tabel, hingga Sitasi Mendeley/APA style.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-slate-600 mb-6">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> Margin, Spasi & Line Spacing Rapi</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> Automatic Table of Contents</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> Penomoran Halaman Berbeda (i, ii & 1, 2)</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-500"></i> Format Sesuai Panduan Kampus/Sekolah</div>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">Mulai dari</span>
+                        <span class="text-lg font-extrabold text-indigo-600">Rp 15.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="kalkulator" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-widest border border-indigo-500/30">Instan & Transparan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-3">Kalkulator Estimasi Biaya</h2>
+                <p class="text-slate-400 mt-2 text-sm sm:text-base">Hitung estimasi pengerjaan tugas kamu secara transparan lalu langsung order via WhatsApp.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-slate-800/80 border border-slate-700/80 rounded-3xl p-6 sm:p-10 backdrop-blur-xl shadow-2xl">
+                <form id="calcForm" onsubmit="event.preventDefault(); sendWhatsApp();" class="space-y-8">
+                    
+                    <!-- Config Seller Phone Number -->
+                    <div class="bg-indigo-950/60 border border-indigo-500/30 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-600/30 border border-indigo-400/30 flex items-center justify-center text-indigo-400">
+                                <i class="fa-solid fa-headset text-lg"></i>
+                            </div>
+                            <div>
+                                <label for="sellerPhone" class="block text-xs font-semibold text-indigo-300">Nomor WA Admin / Seller</label>
+                                <p class="text-[11px] text-slate-400">Format internasional otomatis disesuaikan (Contoh: 08123456789 atau 628123456789)</p>
+                            </div>
+                        </div>
+                        <input type="text" id="sellerPhone" value="62882016045510" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm font-mono text-emerald-400 focus:outline-none focus:border-indigo-500 w-full sm:w-56 text-center" placeholder="628xxxxxxxxxx" required>
+                    </div>
+
+                    <!-- Step 1: Layanan Select -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-3">1. Pilih Jenis Layanan</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="serviceOptions">
+                            <button type="button" onclick="selectService('ppt')" data-service="ppt" class="service-btn bg-slate-700/50 hover:bg-slate-700 border border-slate-600 p-3.5 rounded-xl text-left transition flex items-center gap-3 active-service">
+                                <i class="fa-solid fa-file-powerpoint text-indigo-400 text-lg"></i>
+                                <div>
+                                    <div class="text-sm font-bold">PPT</div>
+                                    <div class="text-[10px] text-slate-400">Presentasi</div>
+                                </div>
+                            </button>
+                            <button type="button" onclick="selectService('makalah')" data-service="makalah" class="service-btn bg-slate-700/50 hover:bg-slate-700 border border-slate-600 p-3.5 rounded-xl text-left transition flex items-center gap-3">
+                                <i class="fa-solid fa-book text-cyan-400 text-lg"></i>
+                                <div>
+                                    <div class="text-sm font-bold">Makalah</div>
+                                    <div class="text-[10px] text-slate-400">Tugas / Karya</div>
+                                </div>
+                            </button>
+                            <button type="button" onclick="selectService('laporan')" data-service="laporan" class="service-btn bg-slate-700/50 hover:bg-slate-700 border border-slate-600 p-3.5 rounded-xl text-left transition flex items-center gap-3">
+                                <i class="fa-solid fa-file-lines text-emerald-400 text-lg"></i>
+                                <div>
+                                    <div class="text-sm font-bold">Laporan</div>
+                                    <div class="text-[10px] text-slate-400">Praktikum/Akhir</div>
+                                </div>
+                            </button>
+                            <button type="button" onclick="selectService('proposal')" data-service="proposal" class="service-btn bg-slate-700/50 hover:bg-slate-700 border border-slate-600 p-3.5 rounded-xl text-left transition flex items-center gap-3">
+                                <i class="fa-solid fa-scroll text-purple-400 text-lg"></i>
+                                <div>
+                                    <div class="text-sm font-bold">Proposal</div>
+                                    <div class="text-[10px] text-slate-400">Kegiatan/Skripsi</div>
+                                </div>
+                            </button>
+                            <button type="button" onclick="selectService('banner')" data-service="banner" class="service-btn bg-slate-700/50 hover:bg-slate-700 border border-slate-600 p-3.5 rounded-xl text-left transition flex items-center gap-3">
+                                <i class="fa-solid fa-palette text-amber-400 text-lg"></i>
+                                <div>
+                                    <div class="text-sm font-bold">Banner / Poster</div>
+                                    <div class="text-[10px] text-slate-400">Desain Grafis</div>
+                                </div>
+                            </button>
+                            <button type="button" onclick="selectService('formatting')" data-service="formatting" class="service-btn bg-slate-700/50 hover:bg-slate-700 border border-slate-600 p-3.5 rounded-xl text-left transition flex items-center gap-3">
+                                <i class="fa-solid fa-align-left text-pink-400 text-lg"></i>
+                                <div>
+                                    <div class="text-sm font-bold">Formatting</div>
+                                    <div class="text-[10px] text-slate-400">Merapikan Doc</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Tier Selection Dynamic -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-3" id="tierLabel">2. Pilih Jumlah Slide / Halaman</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="tierContainer">
+                            <!-- Injected by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Add-ons & Speed -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-300 mb-3">3. Layanan Tambahan (Opsional)</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-700/40 border border-slate-600/80 cursor-pointer hover:bg-slate-700/70 transition">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="addonExpress" onchange="calculateTotal()" class="w-4 h-4 text-indigo-600 rounded bg-slate-900 border-slate-600 focus:ring-indigo-500">
+                                    <div>
+                                        <div class="text-sm font-medium">Express Pengerjaan (&lt; 24 Jam)</div>
+                                        <div class="text-[11px] text-slate-400">Prioritas utama pengerjaan</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-amber-400">+Rp 15.000</span>
+                            </label>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Client Info Inputs -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-700">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1.5">Nama Kamu</label>
+                            <input type="text" id="clientName" placeholder="Contoh: Budi Prasetyo" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1.5">Judul / Topik Tugas</label>
+                            <input type="text" id="clientTopic" placeholder="Contoh: Makalah Ekonomi Digital" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1.5">Target Deadline Hari/Tgl</label>
+                            <input type="text" id="clientDeadline" placeholder="Contoh: Besok, Jam 17.00 WIB" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                        </div>
+                    </div>
+
+                    <!-- Price Total Display & Submit -->
+                    <div class="bg-gradient-to-r from-indigo-900/60 to-slate-900 border border-indigo-500/40 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+                        <div>
+                            <div class="text-xs text-indigo-300 font-medium">Estimasi Total Biaya:</div>
+                            <div class="text-3xl sm:text-4xl font-extrabold text-white mt-1" id="totalPriceDisplay">Rp 25.000</div>
+                            <p class="text-[11px] text-slate-400 mt-1">*Harga final dikonfirmasi via WhatsApp setelah tim cek kerumitan tugas.</p>
+                        </div>
+                        <button type="submit" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-extrabold text-base transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            Pesan via WhatsApp Direct
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portofolio" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-2">Hasil Pengerjaan</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">Portofolio & Sampel Tugas</p>
+                <p class="mt-3 text-slate-600">Beberapa contoh hasil karya tim deadliners.business dari berbagai pesanan klien.</p>
+                
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8" id="portfolioTabs">
+                    <button onclick="filterPortfolio('all')" class="port-tab active-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition">Semua</button>
+                    <button onclick="filterPortfolio('ppt')" class="port-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-white transition">PPT</button>
+                    <button onclick="filterPortfolio('makalah')" class="port-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-white transition">Makalah & Laporan</button>
+                    <button onclick="filterPortfolio('design')" class="port-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-white transition">Banner & Poster</button>
+                    <button onclick="filterPortfolio('format')" class="port-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-white transition">Formatting</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+                
+                <!-- Item 1: PPT -->
+                <div class="port-item ppt bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover shadow-sm">
+                    <div class="h-48 bg-slate-800 relative flex items-center justify-center p-6 text-white text-center">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 rounded-md bg-indigo-500/30 text-indigo-300 text-[10px] font-bold uppercase tracking-wider">PPT Presentasi</span>
+                            <h4 class="font-bold text-lg leading-snug">Presentasi Bisnis Digital & Startups</h4>
+                            <p class="text-xs text-slate-400">18 Slide • Animasi Interactive</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center text-xs text-slate-500 mb-2">
+                            <span>Kategori: Kuliah Ekonomi</span>
+                            <span class="text-emerald-600 font-bold"><i class="fa-solid fa-star"></i> 5.0</span>
+                        </div>
+                        <p class="text-xs text-slate-600 line-clamp-2">Visual pengerjaan PPT yang rapi, pemilihan icon presisi, serta perangkuman materi dari bab buku 50 halaman.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Makalah -->
+                <div class="port-item makalah bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover shadow-sm">
+                    <div class="h-48 bg-slate-900 relative flex items-center justify-center p-6 text-white text-center">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 rounded-md bg-cyan-500/30 text-cyan-300 text-[10px] font-bold uppercase tracking-wider">Makalah Akademis</span>
+                            <h4 class="font-bold text-lg leading-snug">Makalah Analisis Dampak AI pada Pendidikan</h4>
+                            <p class="text-xs text-slate-400">22 Halaman • EYD & Sitasi Mendeley</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center text-xs text-slate-500 mb-2">
+                            <span>Kategori: Tugas Kuliah Umum</span>
+                            <span class="text-emerald-600 font-bold"><i class="fa-solid fa-star"></i> 5.0</span>
+                        </div>
+                        <p class="text-xs text-slate-600 line-clamp-2">Penyusunan bab 1 sampai bab 3 lengkap dengan pendahuluan, kajian teori, pembahasan, dan daftar pustaka rapi.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Banner/Poster -->
+                <div class="port-item design bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover shadow-sm">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-indigo-700 relative flex items-center justify-center p-6 text-white text-center">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 rounded-md bg-white/20 text-white text-[10px] font-bold uppercase tracking-wider">Poster Event</span>
+                            <h4 class="font-bold text-lg leading-snug">Poster Web Semnas Mahasiswa</h4>
+                            <p class="text-xs text-purple-200">Resolusi Tinggi • Siap Cetak & Feed</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center text-xs text-slate-500 mb-2">
+                            <span>Kategori: Desain Grafis</span>
+                            <span class="text-emerald-600 font-bold"><i class="fa-solid fa-star"></i> 5.0</span>
+                        </div>
+                        <p class="text-xs text-slate-600 line-clamp-2">Desain poster acara modern dengan perpaduan warna atraktif, layout pembicara yang jelas, dan typography proporsional.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Formatting -->
+                <div class="port-item format bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover shadow-sm">
+                    <div class="h-48 bg-slate-800 relative flex items-center justify-center p-6 text-white text-center">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 rounded-md bg-amber-500/30 text-amber-300 text-[10px] font-bold uppercase tracking-wider">Formatting Doc</span>
+                            <h4 class="font-bold text-lg leading-snug">Perapihan Skripsi & Daftar Isi Otomatis</h4>
+                            <p class="text-xs text-slate-400">45 Halaman • Format Template Kampus</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center text-xs text-slate-500 mb-2">
+                            <span>Kategori: Tugas Akhir</span>
+                            <span class="text-emerald-600 font-bold"><i class="fa-solid fa-star"></i> 5.0</span>
+                        </div>
+                        <p class="text-xs text-slate-600 line-clamp-2">Merapikan margin 4-3-3-3, perbaikan penomoran romawi & angka, pembuatan otomatis daftar tabel, gambar, dan isi.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Laporan -->
+                <div class="port-item makalah bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover shadow-sm">
+                    <div class="h-48 bg-slate-900 relative flex items-center justify-center p-6 text-white text-center">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-500/30 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">Laporan Praktikum</span>
+                            <h4 class="font-bold text-lg leading-snug">Laporan Hasil Praktikum Kimia Dasar</h4>
+                            <p class="text-xs text-slate-400">28 Halaman • Grafik & Pengolahan Data</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center text-xs text-slate-500 mb-2">
+                            <span>Kategori: Laporan Sains</span>
+                            <span class="text-emerald-600 font-bold"><i class="fa-solid fa-star"></i> 5.0</span>
+                        </div>
+                        <p class="text-xs text-slate-600 line-clamp-2">Penyusunan laporan analisis praktikum, pembuatan tabel pengamatan, kalkulasi rumus, dan pembahasan lengkap.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Banner -->
+                <div class="port-item design bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover shadow-sm">
+                    <div class="h-48 bg-gradient-to-br from-cyan-600 to-blue-800 relative flex items-center justify-center p-6 text-white text-center">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 rounded-md bg-white/20 text-white text-[10px] font-bold uppercase tracking-wider">Banner Spanduk</span>
+                            <h4 class="font-bold text-lg leading-snug">Banner Usaha & Stand Bazar Kampus</h4>
+                            <p class="text-xs text-cyan-200">Format Outdoor Print Ready</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center text-xs text-slate-500 mb-2">
+                            <span>Kategori: Desain Promosi</span>
+                            <span class="text-emerald-600 font-bold"><i class="fa-solid fa-star"></i> 5.0</span>
+                        </div>
+                        <p class="text-xs text-slate-600 line-clamp-2">Desain banner ukuran 3x1 meter untuk kebutuhan bazar komersial maupun event organisasi kampus.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order -->
+    <section id="cara-order" class="py-20 bg-white border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-2">Langkah Mudah</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">Cara Order di deadliners.business</p>
+                <p class="mt-3 text-slate-600">Cukup 4 langkah simpel agar tugas kamu selesai tepat waktu tanpa ribet.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-12 h-12 rounded-full gradient-bg text-white font-black text-lg flex items-center justify-center mx-auto mb-4 shadow-md">
+                        1
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Hitung Estimasi</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Pilih layanan dan paket halaman/slide di kalkulator harga untuk tahu perkiraan biaya.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-12 h-12 rounded-full gradient-bg text-white font-black text-lg flex items-center justify-center mx-auto mb-4 shadow-md">
+                        2
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Kirim via WA</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Klik tombol WhatsApp. Format pesanan & detail tugas kamu akan otomatis terisi.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-12 h-12 rounded-full gradient-bg text-white font-black text-lg flex items-center justify-center mx-auto mb-4 shadow-md">
+                        3
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Proses & DP</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Konfirmasi pesanan, bayar DP awal, lalu tim kami langsung bekerja mengejar deadline.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-12 h-12 rounded-full gradient-bg text-white font-black text-lg flex items-center justify-center mx-auto mb-4 shadow-md">
+                        4
+                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Pelunasan & File</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Cek preview hasil pengerjaan. Setelah cocok & pelunasan, file master dikirim utuh.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-2">FAQ</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">Pertanyaan Sering Diajukan</p>
+                <p class="mt-2 text-slate-600 text-sm">Masih ragu? Temukan jawaban untuk pertanyaan umum kamu di bawah ini.</p>
+            </div>
+
+            <div class="space-y-4" id="faqAccordion">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                        <span>Berapa lama estimasi waktu pengerjaannya?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-sm text-slate-600 border-t border-slate-100 pt-3">
+                        Pengerjaan standar memakan waktu 1-3 hari tergantung pada jumlah halaman/slide dan kerumitan materi. Kami juga menyediakan paket Express (&lt; 24 jam) untuk kamu yang mengejar deadline mendesak.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                        <span>Apakah ada garansi revisi jika ada yang kurang cocok?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-sm text-slate-600 border-t border-slate-100 pt-3">
+                        Ya! Kami memberikan garansi gratis revisi selama perbaikan masih sesuai dengan instruksi/brief awal yang dikirimkan di awal pemesanan.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                        <span>Apakah privasi data & nama saya akan aman?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-sm text-slate-600 border-t border-slate-100 pt-3">
+                        100% Aman. Privasi klien adalah prioritas utama deadliners.business. File dan identitas pemesan tidak akan dipublikasikan atau disebarluaskan ke pihak manapun.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                        <span>Metode pembayaran apa saja yang diterima?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-sm text-slate-600 border-t border-slate-100 pt-3">
+                        Kami menerima pembayaran via Transfer Bank (BCA, Mandiri, BRI) serta e-Wallet lengkap seperti Dana, OVO, GoPay, dan ShopeePay.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 font-bold text-slate-900 flex justify-between items-center focus:outline-none">
+                        <span>Format file apa yang nantinya akan saya terima?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-sm text-slate-600 border-t border-slate-100 pt-3">
+                        Kamu akan menerima file editable (.pptx untuk PPT, .docx untuk makalah/laporan) serta versi PDF pendukung siap kirim. Untuk desain banner/poster, kamu akan mendapatkan versi HD (PNG/JPG/PDF).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-white font-black text-lg">
+                            d
+                        </div>
+                        <span class="text-lg font-bold text-white tracking-tight">
+                            deadliners<span class="text-indigo-400">.business</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                        Mitra andalan pelajar dan mahasiswa dalam mengatasi penumpukan tugas sekolah maupun kuliah secara cepat, aman, dan profesional.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-3">Menu Pintar</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#layanan" class="hover:text-indigo-400 transition">Layanan Kami</a></li>
+                        <li><a href="#kalkulator" class="hover:text-indigo-400 transition">Kalkulator Biaya</a></li>
+                        <li><a href="#portofolio" class="hover:text-indigo-400 transition">Portofolio</a></li>
+                        <li><a href="#cara-order" class="hover:text-indigo-400 transition">Tata Cara Order</a></li>
+                        <li><a href="#faq" class="hover:text-indigo-400 transition">Pertanyaan FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-3">Kontak & Social</h4>
+                    <p class="text-xs text-slate-400 mb-2"><i class="fa-solid fa-clock text-indigo-400 mr-2"></i> Layanan Buka 24/7 Setiap Hari</p>
+                    <p class="text-xs text-slate-400 mb-4"><i class="fa-brands fa-instagram text-indigo-400 mr-2"></i> @deadliners.business</p>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs text-emerald-400">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> CS Fast Response Active
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+                &copy; <script>document.write(new Date().getFullYear())</script> deadliners.business. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Direct WhatsApp Button -->
+    <a id="floatingWaBtn" href="javascript:void(0)" onclick="sendWhatsApp()" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-xs font-bold pl-0 group-hover:pl-2">
+            Konsultasi Tugas Direct
+        </span>
+    </a>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Service pricing schema & configuration
+        const PRICING_DATA = {
+            ppt: {
+                label: "2. Pilih Jumlah Slide Presentasi PPT",
+                tiers: [
+                    { name: "5 - 10 Slide", price: 25000, value: "5-10 slide" },
+                    { name: "11 - 20 Slide", price: 45000, value: "11-20 slide" },
+                    { name: "21 - 30 Slide", price: 55000, value: "21-30 slide" }
+                ]
+            },
+            makalah: {
+                label: "2. Pilih Jumlah Halaman Makalah",
+                tiers: [
+                    { name: "10 - 15 Halaman", price: 25000, value: "10-15 halaman" },
+                    { name: "16 - 25 Halaman", price: 40000, value: "16-25 halaman" },
+                    { name: "26 - 35 Halaman", price: 55000, value: "26-35 halaman" }
+                ]
+            },
+            laporan: {
+                label: "2. Pilih Jumlah Halaman Laporan",
+                tiers: [
+                    { name: "10 - 12 Halaman", price: 30000, value: "10-12 halaman" },
+                    { name: "21 - 30 Halaman", price: 45000, value: "21-30 halaman" },
+                    { name: "31 - 50 Halaman", price: 65000, value: "31-50 halaman" }
+                ]
+            },
+            proposal: {
+                label: "2. Pilih Jumlah Halaman Proposal",
+                tiers: [
+                    { name: "10 - 15 Halaman", price: 30000, value: "10-15 halaman" },
+                    { name: "16 - 25 Halaman", price: 45000, value: "16-25 halaman" },
+                    { name: "26 - 35 Halaman", price: 60000, value: "26-35 halaman" }
+                ]
+            },
+            banner: {
+                label: "2. Pilih Jumlah Desain Banner / Poster",
+                tiers: [
+                    { name: "1 Desain Banner/Poster", price: 20000, value: "1 desain" },
+                    { name: "2 Desain Banner/Poster", price: 38000, value: "2 desain" },
+                    { name: "3 Desain Banner/Poster", price: 55000, value: "3 desain" }
+                ]
+            },
+            formatting: {
+                label: "2. Pilih Cakupan Formatting Dokumen",
+                tiers: [
+                    { name: "Format Ringkas (1 - 15 Hal)", price: 15000, value: "1-15 halaman" },
+                    { name: "Format Sedang (16 - 35 Hal)", price: 25000, value: "16-35 halaman" },
+                    { name: "Format Lengkap (36 - 60 Hal)", price: 35000, value: "36-60 halaman" }
+                ]
+            }
+        };
+
+        let selectedService = 'ppt';
+        let selectedTierIndex = 0;
+
+        // Initialize state on load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTiers();
+            calculateTotal();
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Service selector handler
+        function selectService(serviceKey) {
+            selectedService = serviceKey;
+            selectedTierIndex = 0;
+
+            // Highlight buttons
+            document.querySelectorAll('.service-btn').forEach(btn => {
+                if (btn.getAttribute('data-service') === serviceKey) {
+                    btn.classList.add('border-indigo-500', 'bg-indigo-600/20');
+                    btn.classList.remove('border-slate-600', 'bg-slate-700/50');
+                } else {
+                    btn.classList.remove('border-indigo-500', 'bg-indigo-600/20');
+                    btn.classList.add('border-slate-600', 'bg-slate-700/50');
+                }
+            });
+
+            renderTiers();
+            calculateTotal();
+        }
+
+        // Render tiers dynamically based on selected service
+        function renderTiers() {
+            const data = PRICING_DATA[selectedService];
+            document.getElementById('tierLabel').textContent = data.label;
+
+            const container = document.getElementById('tierContainer');
+            container.innerHTML = '';
+
+            data.tiers.forEach((tier, index) => {
+                const isSelected = index === selectedTierIndex;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.onclick = () => {
+                    selectedTierIndex = index;
+                    renderTiers();
+                    calculateTotal();
+                };
+                btn.className = `p-3.5 rounded-xl border text-left transition flex justify-between items-center ${
+                    isSelected 
+                        ? 'border-emerald-500 bg-emerald-500/10 text-white font-bold ring-1 ring-emerald-500' 
+                        : 'border-slate-700 bg-slate-900/60 text-slate-300 hover:border-slate-600'
+                }`;
+
+                btn.innerHTML = `
+                    <div>
+                        <div class="text-sm">${tier.name}</div>
+                        <div class="text-[11px] ${isSelected ? 'text-emerald-400' : 'text-slate-400'}">Rp ${tier.price.toLocaleString('id-ID')}</div>
+                    </div>
+                    <div class="w-4 h-4 rounded-full border ${isSelected ? 'border-emerald-500 bg-emerald-500' : 'border-slate-600'} flex items-center justify-center">
+                        ${isSelected ? '<i class="fa-solid fa-check text-[10px] text-slate-900"></i>' : ''}
+                    </div>
+                `;
+                container.appendChild(btn);
+            });
+        }
+
+        // Calculate active price total
+        // Calculate active price total
+function calculateTotal() {
+    const currentTier = PRICING_DATA[selectedService].tiers[selectedTierIndex];
+    let basePrice = currentTier.price;
+
+    // Check Add-ons
+    const expressChecked = document.getElementById('addonExpress') ? document.getElementById('addonExpress').checked : false;
+
+    if (expressChecked) basePrice += 15000;
+
+    document.getElementById('totalPriceDisplay').textContent = 'Rp ' + basePrice.toLocaleString('id-ID');
+    return basePrice;
+}
+        
+
+        // Format raw input phone number to valid WhatsApp international standard (628...)
+        function cleanPhoneNumber(phone) {
+            // Remove all non-digits
+            let cleaned = phone.replace(/\D/g, '');
+            
+            // If starts with 08, replace with 628
+            if (cleaned.startsWith('0')) {
+                cleaned = '62' + cleaned.substring(1);
+            }
+            // If doesn't have 62 prefix and starts with 8, add 62
+            else if (cleaned.startsWith('8')) {
+                cleaned = '62' + cleaned;
+            }
+            return cleaned;
+        }
+
+        // Direct WhatsApp Redirection Logic
+        function sendWhatsApp() {
+            const rawSellerPhone = document.getElementById('sellerPhone').value.trim();
+            const sellerPhone = cleanPhoneNumber(rawSellerPhone);
+
+            if (!sellerPhone || sellerPhone.length < 10) {
+                alert('Mohon masukkan nomor WhatsApp Admin/Seller yang valid.');
+                return;
+            }
+
+            const name = document.getElementById('clientName').value.trim() || 'Pelanggan';
+            const topic = document.getElementById('clientTopic').value.trim() || '-';
+            const deadline = document.getElementById('clientDeadline').value.trim() || '-';
+            
+            const serviceName = selectedService.toUpperCase();
+            const tierObj = PRICING_DATA[selectedService].tiers[selectedTierIndex];
+            const totalPrice = calculateTotal();
+
+            const expressAddon = document.getElementById('addonExpress').checked ? 'Ya (Express < 24 Jam)' : 'Tidak';
+
+            // Draft neat WhatsApp Message Template
+            const message = `Halo Admin *deadliners.business*! Saya mau order jasa pengerjaan tugas.
+
+*DETAIL ORDERAN:*
+• Nama Klien: ${name}
+• Layanan: ${serviceName} (${tierObj.name})
+• Topik / Judul: ${topic}
+• Deadline: ${deadline}
+
+*ADD-ON:*
+• Express 24 Jam: ${expressAddon}
+
+• *Estimasi Total:* Rp ${totalPrice.toLocaleString('id-ID')}
+
+Mohon konfirmasi ketersediaan slot dan nomor rekening untuk pembayaran ya. Terima kasih!`;
+
+            // Build direct wa.me link with encoded URI
+            const waUrl = `https://wa.me/${sellerPhone}?text=${encodeURIComponent(message)}`;
+            
+            // Redirect user directly into the chat room
+            window.open(waUrl, '_blank');
+        }
+
+        // Portfolio Category Filter Logic
+        function filterPortfolio(category) {
+            // Tab highlight
+            document.querySelectorAll('#portfolioTabs button').forEach(btn => {
+                btn.classList.remove('gradient-bg', 'text-white');
+                btn.classList.add('text-slate-600');
+            });
+            event.target.classList.add('gradient-bg', 'text-white');
+            event.target.classList.remove('text-slate-600');
+
+            // Grid filter
+            const items = document.querySelectorAll('#portfolioGrid .port-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Accordion FAQ Toggle
+        function toggleFaq(btnElement) {
+            const answerDiv = btnElement.nextElementSibling;
+            const icon = btnElement.querySelector('i');
+
+            answerDiv.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+    </script>
+</body>
+</html>
